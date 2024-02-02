@@ -9,36 +9,32 @@ library(sjPlot)
 library(nlme)
 library(emmeans)
 
-# connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server",
-#                                                                 server = '10.5.99.50',
-#                                                                 user = 'hihipch',
-#                                                                 password = 'dkssudgo@5',
-#                                                                 pathToDriver = 'C:/jdbc_driver')
-# conn <- DatabaseConnector::connect(connectionDetails)
+connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server",
+                                                                server = '',
+                                                                user = '',
+                                                                password = '',
+                                                                pathToDriver = 'C:/jdbc_driver')
+conn <- DatabaseConnector::connect(connectionDetails)
 # #################################
-# con <- dbConnect(RSQLite::SQLite(), dbname="C:/Users/hihip/OneDrive - Ajou University/important/study/이카루스obesity/obesity08131/output/cmOutput/CmData_l1_t3316_c3317/file11aa15f63e9c6.sqlite")
-# data <- dbGetQuery(con, "SELECT * FROM cohorts")
-# connected_db <- data %>% select(personSeqId, personId)
-# colnames(connected_db) <- c('personSeqId', 'person_id')
-# 
-# person <- dbGetQuery(conn,"SELECT person_id, birth_datetime, gender_source_value FROM [CDMPv535_ABMI].[dbo].[person]")
-# 
-# StratPop_l1_s2_p1_t3316_c3317_s1_o3954 <- readRDS("C:/Users/hihip/OneDrive - Ajou University/important/study/이카루스obesity/obesity09201/output/cmOutput/StratPop_l1_s2_p1_t3316_c3317_s1_o3954.rds")
-# Obesity <- StratPop_l1_s2_p1_t3316_c3317_s1_o3954 %>% filter(treatment == 1)
-# Nonobesity <- StratPop_l1_s2_p1_t3316_c3317_s1_o3954 %>% filter(treatment == 0)
-# 
-# Obesity <- merge(Obesity, connected_db) %>% select(person_id, treatment, cohortStartDate, daysToCohortEnd, daysToEvent)
-# Nonobesity <- merge(Nonobesity, connected_db) %>% select(person_id, treatment, cohortStartDate, daysToCohortEnd, daysToEvent)
-# 
-# colnames(Obesity) <- c('person_id', 'treatment', 'cohortStartDate', 'cohortEndDate', 'daysToEvent')
-# colnames(Nonobesity) <- c('person_id', 'treatment', 'cohortStartDate', 'cohortEndDate', 'daysToEvent')
-# Obesity <- Obesity %>% mutate(cohortEndDate = cohortStartDate + cohortEndDate)
-# Nonobesity <- Nonobesity %>% mutate(cohortEndDate = cohortStartDate + cohortEndDate)
-# 
-# Obesity_WCT <- Obesity %>% filter(is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
-# Obesity_UCT <- Obesity %>% filter(!is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
-# Nonobesity_WCT <- Nonobesity %>% filter(is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
-# Nonobesity_UCT <- Nonobesity %>% filter(!is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
+
+person <- dbGetQuery(conn,"SELECT person_id, birth_datetime, gender_source_value FROM [CDMPv535_ABMI].[dbo].[person]")
+
+StratPop_l1_s2_p1_t3316_c3317_s1_o3954 <- readRDS("~/output/cmOutput/StratPop_l1_s2_p1_t3316_c3317_s1_o3954.rds")
+Obesity <- StratPop_l1_s2_p1_t3316_c3317_s1_o3954 %>% filter(treatment == 1)
+Nonobesity <- StratPop_l1_s2_p1_t3316_c3317_s1_o3954 %>% filter(treatment == 0)
+
+Obesity <- merge(Obesity, connected_db) %>% select(person_id, treatment, cohortStartDate, daysToCohortEnd, daysToEvent)
+Nonobesity <- merge(Nonobesity, connected_db) %>% select(person_id, treatment, cohortStartDate, daysToCohortEnd, daysToEvent)
+
+colnames(Obesity) <- c('person_id', 'treatment', 'cohortStartDate', 'cohortEndDate', 'daysToEvent')
+colnames(Nonobesity) <- c('person_id', 'treatment', 'cohortStartDate', 'cohortEndDate', 'daysToEvent')
+Obesity <- Obesity %>% mutate(cohortEndDate = cohortStartDate + cohortEndDate)
+Nonobesity <- Nonobesity %>% mutate(cohortEndDate = cohortStartDate + cohortEndDate)
+
+Obesity_WCT <- Obesity %>% filter(is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
+Obesity_UCT <- Obesity %>% filter(!is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
+Nonobesity_WCT <- Nonobesity %>% filter(is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
+Nonobesity_UCT <- Nonobesity %>% filter(!is.na(daysToEvent)) %>% select(person_id, cohortStartDate, cohortEndDate)
 
 ### Eosinophil count (cells/mcL) : 3006504 (0, 1000) / Neutrophil count (cells/mcL) : 3018010 (0, 10000)
 extractcode <- paste("select m.person_id, m.measurement_date, m.value_as_number from [CDMPv535_ABMI].[dbo].[measurement] m 

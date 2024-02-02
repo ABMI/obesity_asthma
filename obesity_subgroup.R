@@ -9,23 +9,23 @@ library(sjPlot)
 library(nlme)
 library(emmeans)
 
-# connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server",
-#                                                                 server = '10.5.99.50',
-#                                                                 user = 'hihipch',
-#                                                                 password = 'gks1dls!',
-#                                                                 pathToDriver = 'C:/jdbc_driver')
-# conn <- DatabaseConnector::connect(connectionDetails)
+connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server",
+                                                                server = '',
+                                                                user = '',
+                                                                password = '',
+                                                                pathToDriver = 'C:/jdbc_driver')
+conn <- DatabaseConnector::connect(connectionDetails)
 # ###############################
-# launchEvidenceExplorer(dataFolder = 'C:/Users/hihip/OneDrive - Ajou University/important/study/이카루스obesity/obesity09201/output/shinyData', blind = FALSE, launch.browser = FALSE)
-# ################################
-# con <- dbConnect(RSQLite::SQLite(), dbname="C:/Users/hihip/OneDrive - Ajou University/important/study/이카루스obesity/obesity09201/output/cmOutput/CmData_l1_t3316_c3317/filec68f58cec8f2.sqlite")
-# data <- dbGetQuery(con, "SELECT * FROM cohorts")
-# connected_db <- data %>% select(personSeqId, personId)
-# colnames(connected_db) <- c('personSeqId', 'person_id')
-# 
-# person <- dbGetQuery(conn,"SELECT person_id, birth_datetime, gender_source_value FROM [CDMPv535_ABMI].[dbo].[person]")
+launchEvidenceExplorer(dataFolder = '~/output/shinyData', blind = FALSE, launch.browser = FALSE)
+################################
+con <- dbConnect(RSQLite::SQLite(), dbname="!/output/cmOutput/CmData_l1_t3316_c3317/filec68f58cec8f2.sqlite")
+data <- dbGetQuery(con, "SELECT * FROM cohorts")
+connected_db <- data %>% select(personSeqId, personId)
+colnames(connected_db) <- c('personSeqId', 'person_id')
 
-StratPop_l1_s2_p1_t3316_c3317_s1_o3954 <- readRDS("C:/Users/hihip/OneDrive - Ajou University/important/study/이카루스obesity/obesity09201/output/cmOutput/StratPop_l1_s2_p1_t3316_c3317_s1_o3263.rds")
+person <- dbGetQuery(conn,"SELECT person_id, birth_datetime, gender_source_value FROM [CDMPv535_ABMI].[dbo].[person]")
+
+StratPop_l1_s2_p1_t3316_c3317_s1_o3954 <- readRDS("!/output/cmOutput/StratPop_l1_s2_p1_t3316_c3317_s1_o3263.rds")
 Obesity <- StratPop_l1_s2_p1_t3316_c3317_s1_o3954 %>% filter(treatment == 1)
 Nonobesity <- StratPop_l1_s2_p1_t3316_c3317_s1_o3954 %>% filter(treatment == 0)
 

@@ -13,20 +13,20 @@ library(emmeans)
 
 ################################
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server",
-                                                                server = '10.5.99.50',
-                                                                user = 'hihipch',
-                                                                password = 'pch12031203!',
+                                                                server = '',
+                                                                user = '',
+                                                                password = '',
                                                                 pathToDriver = 'C:/jdbc_driver')
 conn <- DatabaseConnector::connect(connectionDetails)
 # #################################
-con <- dbConnect(RSQLite::SQLite(), dbname="G:/내 드라이브/important/study/이카루스obesity/obesity08131/output/cmOutput/CmData_l1_t3316_c3317/file11aa15f63e9c6.sqlite")
+con <- dbConnect(RSQLite::SQLite(), dbname="~/output/cmOutput/CmData_l1_t3316_c3317/file11aa15f63e9c6.sqlite")
 data <- dbGetQuery(con, "SELECT * FROM cohorts")
 connected_db <- data %>% select(personSeqId, personId)
 colnames(connected_db) <- c('personSeqId', 'person_id')
 
 person <- dbGetQuery(conn,"SELECT person_id, birth_datetime, gender_source_value FROM [CDMPv535_ABMI].[dbo].[person]")
 
-StratPop_l1_s1_p1_t3316_c3317_s1_o2580 <- readRDS("G:/내 드라이브/important/study/이카루스obesity/obesity08131/output/cmOutput/StratPop_l1_s1_p1_t3316_c3317_s1_o2580.rds")
+StratPop_l1_s1_p1_t3316_c3317_s1_o2580 <- readRDS("~/output/cmOutput/StratPop_l1_s1_p1_t3316_c3317_s1_o2580.rds")
 table(StratPop_l1_s1_p1_t3316_c3317_s1_o2580$treatment)
 metaDF <- merge(StratPop_l1_s1_p1_t3316_c3317_s1_o2580, connected_db) %>% select(person_id, treatment, cohortStartDate, daysToCohortEnd)
 colnames(metaDF) <- c('person_id', 'treatment', 'cohortStartDate', 'cohortEndDate')
