@@ -1,0 +1,23 @@
+atlasId,atlasName,cohortId,name
+3316,"[PCH] Obesity target cohort (high BMI)- asthma v2 (18, 60, 15)",3316,PCH_Obesity_target_cohort_high_BMI_asthma_v2_18_60_15
+3317,"[PCH] Obesity comparator cohort (low BMI)- asthma v2 (18, 60, 15)",3317,PCH_Obesity_comparator_cohort_low_BMI_asthma_v2_18_60_15
+2580,[PCH] asthma all cause hospitalization,2580,PCH_asthma_all_cause_hospitalization
+3262,[PCH] Severe asthma exacerbation,3262,PCH_Severe_asthma_exacerbation
+3263,[PCH] Asthma exacerbation,3263,PCH_Asthma_exacerbation
+3264,[PCH] new-onset Hypertensive disorder,3264,PCH_newonset_Hypertensive_disorder
+3265,[PCH] new-onset type 2 diabetes,3265,PCH_newonset_type_2_diabetes
+3621,[PCH] new-onset hyperlipidemia,3621,PCH_newonset_hyperlipidemia
+3691,[PCH] IV CS or biologics prescription,3691,PCH_IV_CS_or_biologics_prescription
+3951,[PCH] IV CS prescription,3951,PCH_IV_CS_prescription
+3952,[PCH] biologics prescription,3952,PCH_biologics_prescription
+3953,[PCH] biologics and asthma all cause hospitalization,3953,PCH_biologics_and_asthma_all_cause_hospitalization
+3954,[PCH] biologics or asthma all cause hospitalization or IV CS,3954,PCH_biologics_or_asthma_all_cause_hospitalization_or_IV_CS
+3956,[PCH] biologics or asthma all cause hospitalization,3956,PCH_biologics_or_asthma_all_cause_hospitalization
+3613,"[PCH] Obesity target cohort (high BMI)- asthma v2 (18, 60, 15) (male)",3613,PCH_Obesity_target_cohort_high_BMI_asthma_v2_18_60_15_male
+3614,"[PCH] Obesity comparator cohort (low BMI)- asthma v2 (18, 60, 15) (male)",3614,PCH_Obesity_comparator_cohort_low_BMI_asthma_v2_18_60_15_male
+3615,"[PCH] Obesity target cohort (high BMI)- asthma v2 (18, 60, 15) (female)",3615,PCH_Obesity_target_cohort_high_BMI_asthma_v2_18_60_15_female
+3616,"[PCH] Obesity comparator cohort (low BMI)- asthma v2 (18, 60, 15) (female)",3616,PCH_Obesity_comparator_cohort_low_BMI_asthma_v2_18_60_15_female
+3617,"[PCH] Obesity target cohort (high BMI)- asthma v2 (18, 60, 15) (old)",3617,PCH_Obesity_target_cohort_high_BMI_asthma_v2_18_60_15_old
+3618,"[PCH] Obesity comparator cohort (low BMI)- asthma v2 (18, 60, 15) (old)",3618,PCH_Obesity_comparator_cohort_low_BMI_asthma_v2_18_60_15_old
+3619,"[PCH] Obesity target cohort (high BMI)- asthma v2 (18, 60, 15) (young)",3619,PCH_Obesity_target_cohort_high_BMI_asthma_v2_18_60_15_young
+3620,"[PCH] Obesity comparator cohort (low BMI)- asthma v2 (18, 60, 15) (young)",3620,PCH_Obesity_comparator_cohort_low_BMI_asthma_v2_18_60_15_young
